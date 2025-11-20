@@ -16,9 +16,6 @@ const config: StorybookConfig = {
     "name": "@storybook/nextjs-vite",
     "options": {}
   },
-  "staticDirs": [
-    "../public"
-  ],
   viteFinal: async (config) => {
     // Set base path for production builds
     config.base = '/storybook/';
