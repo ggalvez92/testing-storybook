@@ -22,6 +22,12 @@ const config: StorybookConfig = {
     }
     return head;
   },
+  previewHead: (head, { configType }) => {
+    if (configType === 'PRODUCTION') {
+      return `${head}<base href="/storybook/">`;
+    }
+    return head;
+  },
   viteFinal: async (config, { configType }) => {
     if (configType === 'PRODUCTION') {
       return {
