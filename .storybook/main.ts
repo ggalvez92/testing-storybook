@@ -21,9 +21,7 @@ const config: StorybookConfig = {
   ],
   viteFinal: async (config) => {
     // Set base path for production builds
-    if (config.mode === 'production') {
-      config.base = '/storybook/';
-    }
+    config.base = '/storybook/';
     return config;
   }
 };
