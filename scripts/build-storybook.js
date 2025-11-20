@@ -4,7 +4,16 @@ const path = require('path');
 
 // Build storybook to default directory
 console.log('Building Storybook...');
-execSync('storybook build', { stdio: 'inherit' });
+try {
+  execSync('storybook build', { stdio: 'inherit' });
+} catch (error) {
+  console.error('Failed to build Storybook:');
+  console.error('Exit code:', error.status);
+  console.error('Signal:', error.signal);
+  if (error.stdout) console.error('stdout:', error.stdout.toString());
+  if (error.stderr) console.error('stderr:', error.stderr.toString());
+  process.exit(1);
+}
 
 // Copy storybook-static to public/storybook
 const source = path.join(__dirname, '..', 'storybook-static');
